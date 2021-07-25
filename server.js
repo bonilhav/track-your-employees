@@ -60,3 +60,24 @@ const viewAllEmp = () => {
     });
 };
 
+const viewByDept = () => {
+
+    try {
+        const deptQuery = `SELECT employee.id, employee.first_name AS 'First Name', employee.last_name AS  
+        'Last Name', role.title AS 'Title', department.department_name AS 'Department' 
+    FROM employee 
+    LEFT JOIN role ON employee.role_id = role.id  
+    LEFT JOIN department ON role.department_id = department.id
+    ORDER BY department.department_name`
+        connection.query(deptQuery, (err, results) => {
+            if (err) throw err;
+            console.table(results)
+            initPrompt();
+        });
+    } catch (error) {
+        console.log(error);
+        initPrompt();
+    }
+
+};
+
