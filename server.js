@@ -27,6 +27,7 @@ const initPrompt = () => {
             'Remove Employee',
             'Update Employee Role',
             'View Budget By Department',
+            'Exit'
         ],
     }])
         .then(function ({ userOption }) {
@@ -50,6 +51,9 @@ const initPrompt = () => {
             };
             if (userOption === 'View Budget By Department') {
                 budgetByDepartment();
+            };
+            if (userOption === 'Exit') {
+                connection.end();
             };
         })
 };

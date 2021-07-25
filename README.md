@@ -6,6 +6,9 @@
   This project allows for an individual to review all employees within their company. They can also add new employees, update existing employees and remove employees.
 
   ![Screenshot](./assets/tracker-screenshot.png)
+  ![Screenshot](./assets/walkthrough.gif)
+  
+  (https://drive.google.com/file/d/1Tr06vBecao11tkrK5M6vtk3cT4KQ-ab2/view)
 
   ## Table of Contents
 
