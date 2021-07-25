@@ -26,7 +26,7 @@ const initPrompt = () => {
             'Add Employee',
             'Remove Employee',
             'Update Employee Role',
-            'View Budget By Department',
+/*             'View Budget By Department', */
             'Exit'
         ],
     }])
@@ -49,9 +49,9 @@ const initPrompt = () => {
             if (userOption === 'Update Employee Role') {
                 updateRole();
             };
-            if (userOption === 'View Budget By Department') {
+/*             if (userOption === 'View Budget By Department') {
                 budgetByDepartment();
-            };
+            }; */
             if (userOption === 'Exit') {
                 connection.end();
             };
@@ -218,7 +218,7 @@ const updateRole = async () => {
     });
 }
 
-const budgetByDepartment = async () => {
+/* const budgetByDepartment = async () => {
     connection.query('SELECT * FROM department', (err, results) => {
         if (err) throw err;
         inquirer.prompt([
@@ -240,4 +240,4 @@ const budgetByDepartment = async () => {
             console.table(res);
         })
     });
-}
+} */
