@@ -81,3 +81,45 @@ const viewByDept = () => {
 
 };
 
+const addEmployee = () => {
+    try {
+        const roleQuery = `SELECT * from role`
+        connection.query(roleQuery, async (err, results) => {
+            if (err) throw err;
+            /* let roles = await connection.query('SELECT * FROM role');
+            let managers = await connection.query('SELECT * FROM employee') */
+            await inquirer.prompt([
+                {
+                    name: 'firstName',
+                    message: 'What is their first name?',
+                    type: 'input',
+                },
+                {
+                    name: 'lastName',
+                    message: 'What is their last name?',
+                    type: 'input',
+                },
+                {
+                    name: 'role',
+                    message: 'What is their role?',
+                    type: 'list',
+                    choices: results.map(role =>
+                        role.title
+                    ),
+                },
+            ]).then(function (response) {
+                const chosenRole = results.find(role => role.title === response.role)
+                connection.query('INSERT INTO employee SET ?', {
+                    first_name: response.firstName,
+                    last_name: response.lastName,
+                    role_id: chosenRole.id,
+                })
+            })
+            initPrompt();
+        });
+    } catch (error) {
+        console.log(error);
+        initPrompt();
+    }
+};
+
